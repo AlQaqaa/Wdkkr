@@ -1,0 +1,14 @@
+﻿<Application x:Class="Wdkkr.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Wdkkr"
+             StartupUri="Views/MainWindow.xaml">
+    <Application.Resources>
+        <DropShadowEffect x:Key="DropShadow"
+                          Color="Black"
+                          Direction="270"
+                          ShadowDepth="5"
+                          Opacity="0.5"
+                          BlurRadius="10"/>
+    </Application.Resources>
+</Application>

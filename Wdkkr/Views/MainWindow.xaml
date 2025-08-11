@@ -1,0 +1,45 @@
+﻿<Window x:Class="Wdkkr.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="تطبيق وذكّر" Height="400" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" HorizontalAlignment="Right" FlowDirection="RightToLeft" Icon="/Views/icon.ico" WindowStyle="ToolWindow">
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="قائمة الأذكار" FontWeight="Bold" Margin="0 0 0 5" FontSize="14"/>
+            <ListBox x:Name="AzkarList" Height="150"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+                <TextBox x:Name="NewZikrText" Width="355" Margin="0 0 5 0"/>
+                <Button Content="إضافة" Width="80" Click="AddZikr_Click" Cursor="Hand" FontWeight="Bold">
+                    <Button.Background>
+                        <SolidColorBrush Color="#FF68DA7F"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+                <TextBlock Text="عرض الأذكار كل:" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                <ComboBox x:Name="IntervalText" Width="100" Cursor="Hand">
+                    <ComboBoxItem Content="1" />
+                    <ComboBoxItem Content="5" />
+                    <ComboBoxItem Content="10" />
+                    <ComboBoxItem Content="15" />
+                    <ComboBoxItem Content="30" />
+                    <ComboBoxItem Content="60" />
+                </ComboBox>
+                <TextBlock Text="دقيقة" Margin="3,0,2,0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+                <Button Content="بدء العرض" Width="100" Margin="0 0 5 0" Click="Start_Click" FontWeight="Bold" Background="#FF68DA7F" Cursor="Hand"/>
+                <Button Content="إيقاف العرض" Width="100" Click="Stop_Click" Background="#FFF76464" FontWeight="Bold" Cursor="Hand"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+                <TextBlock Text="مدة عرض الذكر (ثواني):" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                <TextBox x:Name="DisplayTimeText" Width="50" Text="10"/>
+            </StackPanel>
+
+            <CheckBox x:Name="SoundCheck" Content="تشغيل الصوت" IsChecked="True" Margin="0 5 0 5"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
