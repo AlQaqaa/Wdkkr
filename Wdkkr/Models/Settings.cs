@@ -11,5 +11,6 @@ namespace Wdkkr.Models
         public int IntervalMinutes { get; set; } = 30;
         public int DisplaySeconds { get; set; } = 5;
         public bool PlaySound { get; set; } = true;
+        public bool StartWithWindows { get; set; } = false;
     }
 }

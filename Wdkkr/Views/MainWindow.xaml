@@ -5,7 +5,7 @@
     <Grid Margin="10">
         <StackPanel>
             <TextBlock Text="قائمة الأذكار" FontWeight="Bold" Margin="0 0 0 5" FontSize="14"/>
-            <ListBox x:Name="AzkarList" Height="150"/>
+            <ListBox x:Name="AzkarList" Height="150" MouseDoubleClick="AzkarListBox_MouseDoubleClick"/>
 
             <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
                 <TextBox x:Name="NewZikrText" Width="355" Margin="0 0 5 0"/>
@@ -38,7 +38,8 @@
                 <TextBox x:Name="DisplayTimeText" Width="50" Text="10"/>
             </StackPanel>
 
-            <CheckBox x:Name="SoundCheck" Content="تشغيل الصوت" IsChecked="True" Margin="0 5 0 5"/>
+            <CheckBox x:Name="SoundCheck" Content="تشغيل الصوت" IsChecked="True" Margin="0 5 0 5" Cursor="Hand"/>
+            <CheckBox x:Name="StartupCheck" Content="بدء مع تشغيل النظام" Margin="0 5 0 5" Checked="StartupCheck_Checked" Unchecked="StartupCheck_Unchecked" Cursor="Hand"/>
 
         </StackPanel>
     </Grid>

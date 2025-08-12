@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Win32;
 using System.IO;
 using System.Media;
 using System.Text.Json;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 using Wdkkr.Models;
-using System.Windows.Forms;
-using System.Drawing;
+
 
 namespace Wdkkr.Views
 {
@@ -30,7 +29,7 @@ namespace Wdkkr.Views
             InitializeComponent();
 
             notifyIcon = new NotifyIcon();
-            notifyIcon.Icon = new Icon(SystemIcons.Information, 40, 40); // تقدر تغير الأيقونة هنا
+            notifyIcon.Icon = new Icon(SystemIcons.Information, 40, 40);
             notifyIcon.Visible = false;
             notifyIcon.Text = "تطبيق الأذكار";
 
@@ -45,10 +44,11 @@ namespace Wdkkr.Views
             LoadSettings();
             LoadAzkar();
 
-            AzkarList.ItemsSource = azkar.ConvertAll(z => z.Text);
-            IntervalText.Text = settings.IntervalMinutes.ToString();
-            DisplayTimeText.Text = settings.DisplaySeconds.ToString();
-            SoundCheck.IsChecked = settings.PlaySound;
+            AzkarList.ItemsSource = azkar?.ConvertAll(z => z.Text);
+            IntervalText.Text = settings?.IntervalMinutes.ToString() ?? "1";
+            DisplayTimeText.Text = settings?.DisplaySeconds.ToString() ?? "5";
+            SoundCheck.IsChecked = settings?.PlaySound ?? false;
+            StartupCheck.IsChecked = settings?.StartWithWindows ?? false;
 
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
@@ -148,10 +148,8 @@ namespace Wdkkr.Views
                 notifyIcon.BalloonTipText = "حان وقت الذكر";
                 notifyIcon.ShowBalloonTip(3000);
 
-                // إخفاء النافذة بدل إغلاقها
                 this.Hide();
 
-                //System.Windows.MessageBox.Show("بدأ عرض الأذكار");
             }
             else
             {
@@ -191,13 +189,73 @@ namespace Wdkkr.Views
         {
             if (!isExit)
             {
-                e.Cancel = true; // يمنع الإغلاق
+                e.Cancel = true;
                 this.Hide();
                 notifyIcon.Visible = true;
             }
             else
             {
                 base.OnClosing(e);
+            }
+        }
+
+        private void SetStartup(bool enable)
+        {
+            string appName = "Wdkkr"; // اسم البرنامج في الـ Registry
+            string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+
+            using (RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(
+                @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
+            {
+                if (enable)
+                {
+                    registryKey.SetValue(appName, exePath);
+                }
+                else
+                {
+                    registryKey.DeleteValue(appName, false);
+                }
+            }
+        }
+
+        private void StartupCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            settings.StartWithWindows = true;
+            SetStartup(true);
+            SaveSettings();
+        }
+
+        private void StartupCheck_Unchecked(object sender, RoutedEventArgs e)
+        {
+            settings.StartWithWindows = false;
+            SetStartup(false);
+            SaveSettings();
+        }
+
+        private void AzkarListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (AzkarList.SelectedItem != null)
+            {
+                string selectedZikr = AzkarList.SelectedItem.ToString();
+
+                var result = System.Windows.MessageBox.Show(
+                    $"هل تريد حذف الذكر:\n\n{selectedZikr} ؟",
+                    "تأكيد الحذف",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    // حذف الذكر من القائمة
+                    var itemToRemove = azkar.FirstOrDefault(z => z.Text == selectedZikr);
+                    if (itemToRemove != null)
+                    {
+                        azkar.Remove(itemToRemove);
+                        AzkarList.ItemsSource = azkar.ConvertAll(z => z.Text);
+                        AzkarList.Items.Refresh();
+                        SaveAzkar(); // حفظ القائمة بعد التعديل
+                    }
+                }
             }
         }
 

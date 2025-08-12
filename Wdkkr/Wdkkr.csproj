@@ -1,46 +1,57 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-	<UseWindowsForms>true</UseWindowsForms>
-	<ApplicationIcon>icon.ico</ApplicationIcon>
-	<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-	<Title>وذكّر</Title>
-	<Product>وذكّر</Product>
-	<NeutralLanguage>ar</NeutralLanguage>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ApplicationIcon>icon.ico</ApplicationIcon>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Title>وذكّر</Title>
+		<Product>وذكّر</Product>
+		<NeutralLanguage>ar</NeutralLanguage>
+		<Description>برنامج وذكِّر هو برنامج مجاني يساعد المسلمين للمداومة على ذكر الله عز وجل، حيث يقوم البرنامج بعرض الأذكار والأدعية  بشكل تلقائي خلال فترة عملك على حاسوبك في أوقات تحددها أنت.</Description>
+		<Company>خورزميون</Company>
+		<Authors>القعقاع بن غزي</Authors>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Views\icon.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Views\icon.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="icon.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="icon.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Data\" />
+		<Folder Include="ViewModels\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Views\icon.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="C:\Users\chebe\Downloads\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="Assets\icon.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Views\icon.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\MainWindow.xaml">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="Assets\icon.ico">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Page Update="Views\MainWindow.xaml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Page>
+	</ItemGroup>
 
 </Project>
