@@ -30,5 +30,6 @@
 
 ---
 
-## الترخيص (MIT License)
+## لتحميل نسخة سطح المكتب للويندوز
+[تحميل](http://alqaqaa.com.ly/Software/Wdkkr.zip)
 
