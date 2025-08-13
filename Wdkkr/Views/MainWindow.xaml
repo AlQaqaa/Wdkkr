@@ -1,15 +1,15 @@
 ﻿<Window x:Class="Wdkkr.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="تطبيق وذكّر" Height="400" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" HorizontalAlignment="Right" FlowDirection="RightToLeft" Icon="/Views/icon.ico" WindowStyle="ToolWindow">
+        Title="تطبيق وذكّر" Height="450" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" HorizontalAlignment="Right" FlowDirection="RightToLeft" Icon="/Views/icon.ico" WindowStyle="ToolWindow">
     <Grid Margin="10">
         <StackPanel>
             <TextBlock Text="قائمة الأذكار" FontWeight="Bold" Margin="0 0 0 5" FontSize="14"/>
             <ListBox x:Name="AzkarList" Height="150" MouseDoubleClick="AzkarListBox_MouseDoubleClick"/>
-
+            <TextBlock Text="للحذف: أنقر نقرة مزدوجة بزر الفأرة الأيسر على الذكر الذي تريد حذفه" FontWeight="Bold" Margin="5 2 0 5" FontSize="8" Foreground="#FFB9AAAA"/>
             <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
-                <TextBox x:Name="NewZikrText" Width="355" Margin="0 0 5 0"/>
-                <Button Content="إضافة" Width="80" Click="AddZikr_Click" Cursor="Hand" FontWeight="Bold">
+                <TextBox x:Name="NewZikrText" Width="355" Margin="0 0 5 0" Height="51"/>
+                <Button Content="إضافة" Width="80" Click="AddZikr_Click" Cursor="Hand" FontWeight="Bold" Height="26">
                     <Button.Background>
                         <SolidColorBrush Color="#FF68DA7F"/>
                     </Button.Background>
@@ -26,21 +26,17 @@
                     <ComboBoxItem Content="30" />
                     <ComboBoxItem Content="60" />
                 </ComboBox>
-                <TextBlock Text="دقيقة" Margin="3,0,2,0"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
-                <Button Content="بدء العرض" Width="100" Margin="0 0 5 0" Click="Start_Click" FontWeight="Bold" Background="#FF68DA7F" Cursor="Hand"/>
-                <Button Content="إيقاف العرض" Width="100" Click="Stop_Click" Background="#FFF76464" FontWeight="Bold" Cursor="Hand"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
-                <TextBlock Text="مدة عرض الذكر (ثواني):" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                <TextBlock Text="دقيقة" Margin="3,0,0,0" Height="15.96"/>
+                <TextBlock Text="مدة عرض الذكر (ثواني):" VerticalAlignment="Center" Margin="20 0 5 0"/>
                 <TextBox x:Name="DisplayTimeText" Width="50" Text="10"/>
             </StackPanel>
 
             <CheckBox x:Name="SoundCheck" Content="تشغيل الصوت" IsChecked="True" Margin="0 5 0 5" Cursor="Hand"/>
             <CheckBox x:Name="StartupCheck" Content="بدء مع تشغيل النظام" Margin="0 5 0 5" Checked="StartupCheck_Checked" Unchecked="StartupCheck_Unchecked" Cursor="Hand"/>
-
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+                <Button Content="بدء العرض" Width="100" Margin="0 0 5 0" Click="Start_Click" FontWeight="Bold" Background="#FF68DA7F" Cursor="Hand" Height="29"/>
+                <Button Content="إيقاف العرض" Width="100" Click="Stop_Click" Background="#FFF76464" FontWeight="Bold" Cursor="Hand"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

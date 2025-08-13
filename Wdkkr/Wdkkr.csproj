@@ -27,11 +27,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Data\" />
-		<Folder Include="ViewModels\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<None Include="C:\Users\chebe\Downloads\README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
